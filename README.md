@@ -26,8 +26,11 @@
 在set()中，有`this.observers[path]`，但在removeObserver()中是`this.observers[property]`，可以想成以path來代表property? 
 但是在set()中，又有`var pathList = path.split(".");`，以 "." 來分割path字串，path感覺像是個檔名，例如“xxx.png”。
 - 在ResourceManager中有定義
-    `LiveDealerGameScene.Module: {self: ["Chip", "CountDown"]}`
     ```js
+    LiveDealerGameScene.Module: {
+        self: ["Chip", "CountDown"]
+    }
+    
     Chip: {
         chipImg: template.resPath + "myChip.png"
     },
