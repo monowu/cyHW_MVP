@@ -6,12 +6,12 @@
 //CYObserverLite的建構子，定義observerObj及observers兩個屬性
 var CYObserverLite = function (model) {
     this.observerObj = model; //觀察者(訂閱者)，初始為model
-    this.observers = {}; //觀察者名單，初始為空陣列
+    this.observers = {}; //觀察者名單，初始為空
 
 };
 
 //CYObserverLite物件以prototype性質另外定義set()方法
-CYObserverLite.prototype.set = function (path, value) {
+CYObserverLite.prototype.set = function (path, value) { //更新observerInfo，並執行callBack function
     var observerInfo = {};
     var pathList = path.split("."); //以 "." 來分割 path 字串
 
@@ -52,6 +52,7 @@ CYObserverLite.prototype.set = function (path, value) {
                         for (var i in this.observers[key]) {
                             this.observers[key][i](observerInfo.path,
                                         observerInfo.value, observerInfo.oldValue, this.observerObj);
+                            //執行 this.observers[key] 的 callBack function
                         }
                     }
 
