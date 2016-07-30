@@ -12,18 +12,18 @@
 
 - 屬性：observerObj、observers、Type.None、Type.UpdateType
 - 方法：
-    set(path, value)：更新observerInfo，並執行callBack function
-    get(path)：？
-    addObserver(path, callBack)：加入觀察者
-    notify(path)：通知，更新observerInfo給監聽名單中的觀察者
-    removeObserver(property, observer)：observer取消訂閱
-    removeAllObserver()：全部取消訂閱
+`set(path, value)：更新observerInfo，並執行callBack function
+get(path)：？
+addObserver(path, callBack)：加入觀察者
+notify(path)：通知，更新observerInfo給監聽名單中的觀察者
+removeObserver(property, observer)：observer取消訂閱
+removeAllObserver()：全部取消訂閱`
 
 ========== 
 #### 問題
 - roundSerial指的是回合數嗎？
 - 不清楚CYObserverLite中path代表的意義。
-在set()中，有`this.observers[path]`，但在removeObserver()中是`this.observers[property]`，可以想成以path來代表property?
+在set()中，有`this.observers[path]`，但在removeObserver()中是`this.observers[property]`，可以想成以path來代表property? 
 但是在set()中，又有`var pathList = path.split(".");`，以 "." 來分割path字串，path感覺像是個檔名，例如“xxx.png”。
 - 在ResourceManager中有定義
     `LiveDealerGameScene.Module: {self: ["Chip", "CountDown"]}`
