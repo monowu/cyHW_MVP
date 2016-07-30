@@ -3,7 +3,7 @@
  */
 
 var TableInfoPresenter = cc.Class.extend({
-    //view，有 portrait 以及 landscape 兩種
+    //view，分 portrait 以及 landscape 兩種
     _ptView: null,
     _ldView: null,
 
@@ -14,8 +14,10 @@ var TableInfoPresenter = cc.Class.extend({
     _observer: null,
 
     ctor: function (portraitView, landscapeView, _adapter){
+        //初始化view、model及observer
         this._ptView = portraitView;
         this._ldView = landscapeView;
+
         if (! _adapter instanceof TableInfoAdapter){ //判斷 _adapter 是否為 TableInfoAdapter 物件
             //若不是，則拋出 TableInfoPresenter error
             cc.error("[TableInfoPresenter] _adapter should be TableInfoAdapter");
@@ -25,14 +27,16 @@ var TableInfoPresenter = cc.Class.extend({
 
         this._ptView.setUserName(cy.userInfo.userName);
         this._ldView.setUserName(cy.userInfo.userName);
+
         this._initObservers(this._observer);
+
         //force update the first time
         this._adapter.updateTotalBet(0);
         this._adapter.updateCredit(0);
     }
 });
 
-TableInfoPresenter.prototype.removeObserver = function (){
+TableInfoPresenter.prototype.removeObserver = function (){ //移除觀察者
     this._observer.removeAllObserver();
 };
 

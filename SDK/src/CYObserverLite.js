@@ -3,14 +3,14 @@
  */
 
 
-//CYObserverLite 的建構子，定義 observerObj 及 observers 兩個屬性
+//CYObserverLite的建構子，定義observerObj及observers兩個屬性
 var CYObserverLite = function (model) {
-    this.observerObj = model; //定義 觀察物件，初始為 model
-    this.observers = {}; //定義 觀察者，初始為空陣列
+    this.observerObj = model; //觀察者(訂閱者)，初始為model
+    this.observers = {}; //觀察者名單，初始為空陣列
 
 };
 
-//CYObserverLite 物件以 prototype 性質另外定義 set() 方法
+//CYObserverLite物件以prototype性質另外定義set()方法
 CYObserverLite.prototype.set = function (path, value) {
     var observerInfo = {};
     var pathList = path.split("."); //以 "." 來分割 path 字串
@@ -83,21 +83,21 @@ CYObserverLite.prototype.set = function (path, value) {
 
 };
 
-//CYObserverLite 以 prototype 定義 get()
+//CYObserverLite以prototype定義get()
 CYObserverLite.prototype.get = function (path) {
     return CYUtility.deepFind(this.observerObj, path);
 };
 
-//CYObserverLite 以 prototype 定義 addObserver()
+//CYObserverLite以prototype定義addObserver()
 CYObserverLite.prototype.addObserver = function (path, callBack) { //加入觀察者
     this.observers[path] = this.observers[path] || [];
-    if (this.observers[path].indexOf(callBack) == -1) { //判斷this.observers[path]中是否有callBack
+    if (this.observers[path].indexOf(callBack) == -1) { //判斷this.observers[path]此陣列中是否有callBack
         this.observers[path].push(callBack); //若無，則push
     }
 };
 
-//CYObserverLite 以 prototype 定義 notify()
-CYObserverLite.prototype.notify = function (path) { //通知，更新 info
+//CYObserverLite以prototype定義notify()
+CYObserverLite.prototype.notify = function (path) { //通知，更新observerInfo給監聽名單中的觀察者
     var observerInfo = {};
     for (var i in this.observers[path]) {
         observerInfo.path = path;
@@ -108,7 +108,7 @@ CYObserverLite.prototype.notify = function (path) { //通知，更新 info
 };
 
 //CYObserverLite 以 prototype 定義 removeObserver()
-CYObserverLite.prototype.removeObserver = function(property, observer) { //observer 取消訂閱
+CYObserverLite.prototype.removeObserver = function(property, observer) { //observer取消訂閱
     if (this.observers[property]) {
         var index = this.observers[property].indexOf(observer);
         if (index >= 0) {

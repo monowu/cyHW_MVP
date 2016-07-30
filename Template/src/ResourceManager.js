@@ -1,5 +1,5 @@
 var template = template || {};
-template.resPath = "/MyDirectory/Projects/A_Project_Example/Template/res/"; //root path
+template.resPath = "/MyDirectory/Projects/A_Project_Example/Template/res/"; //template's root path
 template.res = {
 	
 	LiveDealerGameScene: {
@@ -31,10 +31,10 @@ template.res = {
         payoffWin: template.resPath + "public_image/Ultimate/home_page/home_page_pic_info_win.png",
         payoffLose: template.resPath + "public_image/Ultimate/home_page/home_page_pic_info_lose.png",
     },
-    Chip: {  //碎片？
+    Chip: {  //自訂Module，碎片？
     	chipImg: template.resPath + "myChip.png"
     },
-    CountDown: { //倒數
+    CountDown: { //自訂Module，倒數
         progress: "#pic_time_circle_green.png",
         color: {
             red: cc.color(),

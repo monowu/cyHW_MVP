@@ -3,9 +3,9 @@
  */
 
 var TableInfoView = cc.Node.extend({
-    isLandscape: false, //畫面預設 notLandscape
+    isLandscape: false, //畫面預設 not Landscape
 
-    _isInitialized: false, //預設 notInitialized
+    _isInitialized: false, //預設 not Initialized
 
     ctor: function (isLandscape){
         this._super();
@@ -24,7 +24,7 @@ var TableInfoView = cc.Node.extend({
 
         if (!this._isInitialized){
             if (this.isLandscape){
-                //if landscape, do something
+                //if landscape, do nothing
             }
         }
     }
@@ -55,11 +55,12 @@ TableInfoView.prototype.updateTotalBet = function (prefix, totalBet){
 TableInfoView.prototype._defineChildren = function (jsonPath, rootPath, isLandscape){
     var _css;
     if (isLandscape) //判斷是否為 landscape
-        _css = ccs.load(jsonPath.landscape, rootPath); //ccs.load = function(file, path){}
+        //ccs.load = function(file, path){...}，file通常為JSON
+        _css = ccs.load(jsonPath.landscape, rootPath);
     else
-        _css = ccs.load(jsonPath.portrait, rootPath); //載入 portrait 的 JSON
+        _css = ccs.load(jsonPath.portrait, rootPath);
 
-    //背景畫面，包含背景、userName 及 roundSerial
+    //this._view，包含背景、userName 及 roundSerial
     this._view = _css.node.getChildByName("bgLayout");
     this._view.userName = this._view.getChildByName("userName");
     this._view.roundSerial = this._view.getChildByName("roundSerial");
