@@ -12,12 +12,12 @@
 
 - 屬性：observerObj、observers、Type.None、Type.UpdateType
 - 方法：
--- set(path, value)：更新observerInfo，並執行callBack function
--- get(path)：？
--- addObserver(path, callBack)：加入觀察者
--- notify(path)：通知，更新observerInfo給監聽名單中的觀察者
--- removeObserver(property, observer)：observer取消訂閱
--- removeAllObserver()：全部取消訂閱
+    set(path, value)：更新observerInfo，並執行callBack function
+    get(path)：？
+    addObserver(path, callBack)：加入觀察者
+    notify(path)：通知，更新observerInfo給監聽名單中的觀察者
+    removeObserver(property, observer)：observer取消訂閱
+    removeAllObserver()：全部取消訂閱
 
 ========== 
 #### 問題
