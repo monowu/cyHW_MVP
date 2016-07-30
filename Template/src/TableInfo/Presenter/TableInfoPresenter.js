@@ -44,10 +44,12 @@ TableInfoPresenter.prototype._initObservers = function (obvr){
     var self = this;
     var prefix;
 
-    //分別加入觀察者(訂閱者)，credit、roundSerial、totalBet
+    //credit、roundSerial、totalBet，分別加入觀察者(訂閱者)
+    //在callBack中做view的更新
     obvr.addObserver("credit", function (path, value, oldValue){
         prefix = cy.locale.localized(cy.locale.MEMBER, "BALANCE");
-        //更新 view 的 credit
+
+        //更新view的credit
         self._ldView.updateCredit(prefix + "：", value);
         self._ptView.updateCredit(prefix + "：", value);
         cy.userInfo.credit = value;
@@ -55,12 +57,16 @@ TableInfoPresenter.prototype._initObservers = function (obvr){
 
     obvr.addObserver("roundSerial", function (path, value, oldValue){
         prefix = cy.locale.localized(cy.locale.OTHER, "ROUND_ID");
+
+        //更新view的roundSerial
         self._ldView.updateRoundSerial(prefix + "：" + value);
         self._ptView.updateRoundSerial(prefix + "：" + value);
     });
 
     obvr.addObserver("totalBet", function (path, value, oldValue){
         prefix = cy.locale.localized(cy.locale.COMMON, "TOTAL_BET");
+
+        //更新view的totalBet
         self._ldView.updateTotalBet(prefix + "：", value);
         self._ptView.updateTotalBet(prefix + "：", value);
     });

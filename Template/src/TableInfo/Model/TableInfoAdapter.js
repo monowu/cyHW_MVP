@@ -3,7 +3,6 @@
  */
 
 var TableInfoAdapter = cc.Class.extend({
-
     observerLite: null,
 
     ctor: function (){
