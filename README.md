@@ -1,6 +1,6 @@
 # CYHomework_MVP
 ### ResourceManager
-- 定義素材及JSON檔案路徑
+- 定義素材、JSON檔案路徑與自訂的Module
 
 ### LiveDealerGameScene
 
@@ -20,3 +20,8 @@
     - `removeAllObserver()`：全部取消訂閱
 
 ========== 
+### MVP與觀察者模式之間的關係
+以訂閱者(即觀察者)向報社訂報紙的例子來說，
+- View是訂閱者
+- Presenter是中間人，負責幫View向報社訂報紙
+- Model像是報社，負責資料更新(?)
